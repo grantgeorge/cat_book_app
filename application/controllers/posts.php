@@ -6,11 +6,11 @@
  * This is an example of a few basic user interaction methods you could use
  * all done with a hardcoded array.
  *
- * @package   CatBook
+ * @package   postBook
  * @subpackage  End Point
  * @category  Controller
  * @author    Grant George
- * @link    https://github.com/grantgeorge/cat_book_app
+ * @link    https://github.com/grantgeorge/post_book_app
 */
 
 // This can be removed if you use __autoload() in config.php OR use Modular Extensions
@@ -34,28 +34,28 @@ class Posts extends REST_Controller {
 
   public function index_post()
   {
-    $new_cat = $this->post();
+    $new_post = $this->post();
 
-    $new_cat['id'] = $this->post_model->create($this->post());
+    $new_post['id'] = $this->post_model->create($this->post());
 
-    $this->response($new_cat, 201);
+    $this->response($new_post, 201);
   }
 
-  public function cat_get($id)
+  public function post_get($id)
   {
-    $cat = $this->post_model->find_by_id($id);
+    $post = $this->post_model->find_by_id($id);
 
-    $this->response($cat);
+    $this->response($post);
   }
 
-  public function cat_put($id)
+  public function post_put($id)
   {
     $response = $this->post_model->update($id, $this->put());
 
     $this->response($response, 200);
   }
 
-  public function cat_delete($id)
+  public function post_delete($id)
   {
 
     $this->post_model->delete($id);

@@ -43,7 +43,8 @@ $route['404_override'] = '';
 
 $route['cats']   = 'cats';
 $route['cats/(:num)']   = 'cats/cat/$1';
-// $route['cats/remove/(:num)']   = 'cats/delete/$1';
+$route['posts']   = 'posts';
+$route['posts/(:num)']   = 'posts/post/$1';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
