@@ -13,9 +13,9 @@ class Cats extends CI_Controller {
 
     header('Content-Type: '.'application/json');
 
-    $data = $this->cat_model->all();
+    $cats = $this->cat_model->all();
 
-    print_r(json_encode($data));
+    print_r(json_encode($cats));
 
     return true;
   }
@@ -25,9 +25,9 @@ class Cats extends CI_Controller {
 
     header('Content-Type: '.'application/json');
 
-    $data = $this->cat_model->find_by_id($id);
+    $cat = $this->cat_model->find_by_id($id);
 
-    print_r(json_encode($data));
+    print_r(json_encode($cat));
 
     return true;
   }
