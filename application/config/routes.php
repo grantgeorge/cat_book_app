@@ -42,7 +42,7 @@ $route['default_controller'] = "cats/index";
 $route['404_override'] = '';
 
 $route['cats']   = 'cats';
-$route['cats/(:num)']   = 'cats/show/$1';
+$route['cats/(:num)']   = 'cats/cat/$1';
 // $route['cats/remove/(:num)']   = 'cats/delete/$1';
 
 /* End of file routes.php */

@@ -37,7 +37,7 @@
 |
 */
 
-$autoload['packages'] = array();
+$autoload['packages'] = array(APPPATH.'/libraries/REST_Controller.php');
 
 
 /*

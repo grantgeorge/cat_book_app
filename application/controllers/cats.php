@@ -1,5 +1,19 @@
 <?php
 
+/**
+ * Example
+ *
+ * This is an example of a few basic user interaction methods you could use
+ * all done with a hardcoded array.
+ *
+ * @package   CatBook
+ * @subpackage  End Point
+ * @category  Controller
+ * @author    Grant George
+ * @link    https://github.com/grantgeorge/cat_book_app
+*/
+
+// This can be removed if you use __autoload() in config.php OR use Modular Extensions
 require APPPATH.'/libraries/REST_Controller.php';
 
 class Cats extends REST_Controller {
@@ -26,25 +40,29 @@ class Cats extends REST_Controller {
     $this->response($new_cat, 201);
   }
 
-  public function show_get($id)
+  public function cat_get($id)
   {
     $cat = $this->cat_model->find_by_id($id);
 
     $this->response($cat);
   }
 
-  public function index_put()
+  public function cat_put($id)
   {
-    print_r($this->put());
+    $response = $this->cat_model->update($id, $this->put());
 
-    $this->cat_model->update($this->put());
+    $this->response($response, 200);
   }
 
-  public function remove_delete($id)
+  public function cat_delete($id)
   {
-    $this->response(array(
-      'returned from delete:' => $id,
-    ));
+    $cat = $this->cat_model->find_by_id($id);
+
+    $cat->delete();
+
+    $message = array('id' => $cat->id, 'message' => 'DELETED!');
+
+    $this->response($message, 200);
   }
 
 }
