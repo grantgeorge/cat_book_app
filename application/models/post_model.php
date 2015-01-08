@@ -7,9 +7,9 @@ class Post_model extends CI_Model {
     $this->load->database();
   }
 
-  public function all()
+  public function all($query_params = array())
   {
-    $query = $this->db->get('posts');
+    $query = $this->db->get_where('posts', $query_params);
     return $query->result('Post_model');
   }
 

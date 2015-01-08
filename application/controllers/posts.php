@@ -27,7 +27,7 @@ class Posts extends REST_Controller {
 
   public function index_get()
   {
-    $posts = $this->post_model->all();
+    $posts = $this->post_model->all($this->get());
 
     $this->response($posts);
   }
