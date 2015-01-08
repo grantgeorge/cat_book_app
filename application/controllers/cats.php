@@ -1,6 +1,8 @@
 <?php
 
-class Cats extends CI_Controller {
+require APPPATH.'/libraries/REST_Controller.php';
+
+class Cats extends REST_Controller {
 
   public function __construct()
   {
@@ -8,21 +10,14 @@ class Cats extends CI_Controller {
     $this->load->model('cat_model');
   }
 
-  public function index()
+  public function index_get()
   {
     $cats = $this->cat_model->all();
 
     $this->output->set_output($cats);
   }
 
-  public function show($id)
-  {
-    $cat = $this->cat_model->find_by_id($id);
-
-    $this->output->set_output($cat);
-  }
-
-  public function create()
+  public function index_post()
   {
     $new_cat = $_POST;
 
@@ -31,7 +26,14 @@ class Cats extends CI_Controller {
     $this->output->set_output($new_cat);
   }
 
-  public function update()
+  public function show_get($id)
+  {
+    $cat = $this->cat_model->find_by_id($id);
+
+    $this->output->set_output($cat);
+  }
+
+  public function index_put()
   {
     print_r($this->put);
   }
