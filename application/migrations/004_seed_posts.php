@@ -30,10 +30,6 @@ class Migration_Seed_posts extends CI_Migration {
   public function down()
   {
 
-    for ($i=0; $i<count($insert_ids); $i++)
-    {
-      $this->cate_model->delete($i);
-    }
   }
 
 }

@@ -11,6 +11,7 @@ class Migration_Add_cats extends CI_Migration {
     $this->dbforge->add_field("name varchar(255) DEFAULT NULL");
     $this->dbforge->add_field("email varchar(255) DEFAULT NULL");
     $this->dbforge->add_field("password varchar(255) DEFAULT NULL");
+    $this->dbforge->add_field("pro_pic varchar(255) DEFAULT NULL");
     $this->dbforge->add_field("fur_color varchar(255) DEFAULT NULL");
     $this->dbforge->add_field("created_at DATETIME DEFAULT NULL");
     $this->dbforge->add_field("updated_at DATETIME DEFAULT NULL");

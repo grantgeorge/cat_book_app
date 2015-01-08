@@ -18,6 +18,7 @@ class Migration_Seed_cats extends CI_Migration {
     $this->dbforge->add_field("name varchar(255) DEFAULT NULL");
     $this->dbforge->add_field("email varchar(255) DEFAULT NULL");
     $this->dbforge->add_field("password varchar(255) DEFAULT NULL");
+    $this->dbforge->add_field("pro_pic varchar(255) DEFAULT NULL");
     $this->dbforge->add_field("fur_color varchar(255) DEFAULT NULL");
     $this->dbforge->add_field("created_at DATETIME DEFAULT NULL");
     $this->dbforge->add_field("updated_at DATETIME DEFAULT NULL");
@@ -33,6 +34,7 @@ class Migration_Seed_cats extends CI_Migration {
       $cat['name'] = $faker->name;
       $cat['email'] = $faker->email;
       $cat['password'] = $faker->password;
+      $cat['pro_pic'] = "http://lorempixel.com/125/125/cats/".$i;
       $cat['fur_color'] = $faker->safeColorname;
       $cat['updated_at'] = $mysqltime = date ("Y-m-d H:i:s", time());
       $cat['created_at'] = $mysqltime = date ("Y-m-d H:i:s", time());
@@ -46,11 +48,6 @@ class Migration_Seed_cats extends CI_Migration {
 
   public function down()
   {
-
-    for ($i=0; $i<count($insert_ids); $i++)
-    {
-      $this->cate_model->delete($i);
-    }
   }
 
 }
