@@ -15,6 +15,8 @@ at each part of the tutorial.
 
 Ex: git diff part1-1 part1-2
 
+This is [an example]https://github.com/grantgeorge/cat_book_app/compare/part1-1...part1-2 "Compare part1-2 to part1-1") of comparing the different parts of the tutorial. Your goal is to "fill in the diff" to get to the next part.
+
 Codeigniter PHP (Backend)
 ---------------------------
 
