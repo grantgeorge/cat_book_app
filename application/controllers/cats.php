@@ -15,6 +15,7 @@
 
 // This can be removed if you use __autoload() in config.php OR use Modular Extensions
 require APPPATH.'/libraries/REST_Controller.php';
+require_once APPPATH.'/libraries/Faker-master/src/autoload.php';;
 
 class Cats extends REST_Controller {
 
@@ -56,13 +57,19 @@ class Cats extends REST_Controller {
 
   public function cat_delete($id)
   {
-    $cat = $this->cat_model->find_by_id($id);
 
-    $cat->delete();
+    $this->cat_model->delete($id);
 
-    $message = array('id' => $cat->id, 'message' => 'DELETED!');
+    $message = array('id' => $id, 'message' => 'DELETED!');
 
     $this->response($message, 200);
+  }
+
+  public function test_get()
+  {
+    $faker = Faker\Factory::create();
+
+    echo $faker->name;
   }
 
 }

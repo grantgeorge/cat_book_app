@@ -40,9 +40,9 @@ class Cat_model extends CI_Model {
     return $updated_cat;
   }
 
-  public function delete()
+  public function delete($id)
   {
-    $this->db->delete('cats', array('id' => $this->id));
+    $this->db->delete('cats', array('id' => $id));
   }
 
 }
