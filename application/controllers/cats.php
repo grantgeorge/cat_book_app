@@ -10,40 +10,35 @@ class Cats extends CI_Controller {
 
   public function index()
   {
-
-    header('Content-Type: '.'application/json');
-
     $cats = $this->cat_model->all();
 
-    print_r(json_encode($cats));
-
-    return true;
+    $this->output->set_output($cats);
   }
 
   public function show($id)
   {
-
-    header('Content-Type: '.'application/json');
-
     $cat = $this->cat_model->find_by_id($id);
 
-    print_r(json_encode($cat));
-
-    return true;
+    $this->output->set_output($cat);
   }
 
   public function create()
   {
-    header('Content-Type: '.'application/json');
-
     $new_cat = $_POST;
 
-    $new_cat_id = $this->cat_model->create($_POST);
+    $new_cat['id'] = $this->cat_model->create($_POST);
 
-    $new_cat['id'] = $new_cat_id;
+    $this->output->set_output($new_cat);
+  }
 
-    print_r(json_encode($new_cat));
+  public function update()
+  {
+    print_r($this->put);
+  }
 
-    return true;
+  public function _output($output)
+  {
+    header('Content-Type: application/json');
+    echo json_encode($output);
   }
 }

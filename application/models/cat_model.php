@@ -16,7 +16,7 @@ class Cat_model extends CI_Model {
   public function find_by_id($id = FALSE)
   {
     $query = $this->db->get_where('cats', array('id' => $id));
-    return $query->row(0, 'Cat_model');
+    return $query->row_array();
   }
 
   public function create($data)

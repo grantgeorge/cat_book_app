@@ -20,7 +20,7 @@ class Tests extends CI_Controller {
   {
     $this->load->model('cat_model');
 
-    $test = array_keys(get_object_vars($this->cat_model->find_by_id(1)));
+    $test = array_keys($this->cat_model->find_by_id(1));
     $expected_result = array('id', 'email', 'password', 'name', 'fur_color');
     $test_name = 'Tests getting a single cat';
 
