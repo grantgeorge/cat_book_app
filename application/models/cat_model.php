@@ -26,4 +26,9 @@ class Cat_model extends CI_Model {
     return $this->db->insert_id();
   }
 
+  public function update($data)
+  {
+    $query = $this->db->get_where('cats', array('id' => $id));
+  }
+
 }
