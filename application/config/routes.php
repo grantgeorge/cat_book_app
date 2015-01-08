@@ -38,8 +38,11 @@
 |
 */
 
-$route['default_controller'] = "welcome";
+$route['default_controller'] = "cats/index";
 $route['404_override'] = '';
+
+$route['cats']   = 'cats';
+$route['cats/(:num)']   = 'cats/show/$1';
 
 
 /* End of file routes.php */
