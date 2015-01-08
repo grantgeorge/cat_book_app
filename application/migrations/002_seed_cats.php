@@ -15,10 +15,12 @@ class Migration_Seed_cats extends CI_Migration {
     $this->dbforge->drop_table('cats');
 
     $this->dbforge->add_field("id int(11) unsigned NOT NULL AUTO_INCREMENT");
-    $this->dbforge->add_field("name varchar(255) NOT NULL DEFAULT ''");
-    $this->dbforge->add_field("email varchar(255) NOT NULL DEFAULT ''");
-    $this->dbforge->add_field("password varchar(255) NOT NULL DEFAULT ''");
-    $this->dbforge->add_field("fur_color varchar(255) NOT NULL DEFAULT ''");
+    $this->dbforge->add_field("name varchar(255) DEFAULT NULL");
+    $this->dbforge->add_field("email varchar(255) DEFAULT NULL");
+    $this->dbforge->add_field("password varchar(255) DEFAULT NULL");
+    $this->dbforge->add_field("fur_color varchar(255) DEFAULT NULL");
+    $this->dbforge->add_field("created_at DATETIME DEFAULT NULL");
+    $this->dbforge->add_field("updated_at DATETIME DEFAULT NULL");
 
     $this->dbforge->add_key('id', TRUE);
     $this->dbforge->add_key('email');
@@ -32,6 +34,8 @@ class Migration_Seed_cats extends CI_Migration {
       $cat['email'] = $faker->email;
       $cat['password'] = $faker->password;
       $cat['fur_color'] = $faker->safeColorname;
+      $cat['updated_at'] = $mysqltime = date ("Y-m-d H:i:s", time());
+      $cat['created_at'] = $mysqltime = date ("Y-m-d H:i:s", time());
 
       $this->cat_model->create($cat);
 
