@@ -8,35 +8,16 @@
  * Service in the catBookUiApp.
  */
 angular.module('catBookUiApp')
-  .service('CatsModel', function ($http) {
+  .factory('Cats', function ($resource) {
 
-    var model = this,
-      URLS = {
-        FETCH: 'http://cat_book.dev/index.php/cats'
+    return $resource('http://cat_book.dev/index.php/cats/:catId', null,
+    {
+      'update': { method: 'PUT', params:{},
+        header: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
       },
-      cats,
-      cat;
-
-    function extract(result) {
-      return result.data;
-    }
-
-    function cacheCats(result) {
-      cats = extract(result);
-      return cats;
-    }
-
-    function cacheCat(result) {
-      cat = extract(result);
-      return cat;
-    }
-
-    model.getCats = function() {
-      return $http.get(URLS.FETCH).then(cacheCats);
-    };
-
-    model.getCat = function(id) {
-      return $http.get(URLS.FETCH+'/'+id).then(cacheCat);
-    }
+      'delete': { method: 'DELETE' }
+    });
 
   });

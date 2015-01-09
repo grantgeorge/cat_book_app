@@ -8,21 +8,16 @@
  * Controller of the catBookUiApp
  */
 angular.module('catBookUiApp')
-  .controller('CatCtrl', function ($scope, $http, CatsModel, PostsModel,
-  $routeParams) {
+  .controller('CatCtrl', function ($scope, $http, Cats, PostsModel,
+  $routeParams, $resource) {
 
     if($routeParams.id) {
-      CatsModel.getCat($routeParams.id)
-        .then(function(result) {
-          $scope.cat = result;
-        });
-      PostsModel.getPostsForCat($routeParams.id)
-        .then(function(result) {
-          $scope.posts = result;
-        });
+
+      $scope.cat = Cats.get({ catId:$routeParams.id });
+
     }
     else {
-      CatsModel.getCats()
+      Cats.getCats()
         .then(function(result) {
           $scope.cats = result;
         });
@@ -34,10 +29,12 @@ angular.module('catBookUiApp')
 
     $scope.updateCat = function(data) {
       $scope.editing = false;
-      // CatsModel.updateCat($scope.cat)
-      //   .then(function(result) {
-      //     $scope.cat = result;
-      //   });
+      Cats.update({ catId: $scope.cat.id }, $scope.cat);
+    }
+
+    $scope.deleteCat = function(data) {
+      $scope.editing = false;
+      Cats.delete({ catId: $scope.cat.id });
     }
 
   });
