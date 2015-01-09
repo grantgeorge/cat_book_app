@@ -30,7 +30,7 @@ class Migration_Seed_cats extends CI_Migration {
 
     $insert_ids = array();
 
-    for ($i=0; $i < 100; $i++) {
+    for ($i=0; $i < 60; $i++) {
       $cat['name'] = $faker->name;
       $cat['email'] = $faker->email;
       $cat['password'] = $faker->password;

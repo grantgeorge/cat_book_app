@@ -29,4 +29,10 @@ angular.module('catBookUiApp')
       return $http.get(URLS.FETCH).then(cachePosts);
     };
 
+    model.getPostsForCat = function(id) {
+      return $http.get(URLS.FETCH, {
+        params: { cat_id: id }
+      }).then(cachePosts);
+    };
+
   });

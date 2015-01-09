@@ -14,8 +14,8 @@ class Migration_Seed_posts extends CI_Migration {
 
     $insert_ids = array();
 
-    for ($i=0; $i < 100; $i++) {
-      $post['cat_id'] = $faker->numberBetween($min = 1, $max = 100);
+    for ($i=0; $i < 60; $i++) {
+      $post['cat_id'] = $faker->numberBetween($min = 1, $max = 60);
       $post['text'] = $faker->text($maxNbChars = 500);
       $post['updated_at'] = $mysqltime = date ("Y-m-d H:i:s", time());
       $post['created_at'] = $mysqltime = date ("Y-m-d H:i:s", time());
