@@ -31,7 +31,11 @@ angular.module('catBookUiApp')
 
     model.getPostsForCat = function(id) {
       return $http.get(URLS.FETCH, {
-        params: { cat_id: id }
+        params: { cat_id: id },
+        // transformResponse: function (data, headers) {
+        //   // mess with the data
+        //   console.log(data);
+        // }
       }).then(cachePosts);
     };
 

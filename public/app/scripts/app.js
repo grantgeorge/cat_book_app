@@ -40,4 +40,7 @@ angular
       .otherwise({
         redirectTo: '/cats'
       });
+  })
+  .run(function ($http) {
+
   });

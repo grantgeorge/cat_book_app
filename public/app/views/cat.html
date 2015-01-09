@@ -1,10 +1,64 @@
-<div class="col-md-6">
-  <a href="#" class="thumbnail">
-    <img src="{{ cat.pro_pic }}" alt="...">
-  </a>
-</div>
+<h1>{{ cat.name }}</h1>
+<table class="table table-striped">
+  <th>Pro Pic</th>
+  <th>Name</th>
+  <th>Email</th>
+  <th>Password</th>
+  <th>fur_color</th>
+  <tr>
+    <td><img src="{{ cat.pro_pic }}" alt="..."></td>
+    <td>{{ cat.name }}</td>
+    <td>{{ cat.email }}</td>
+    <td>{{ cat.password }}</td>
+    <td>{{ cat.fur_color }}</td>
+  </tr>
+</table>
 
-<div class="col-md-6">
-  <p ng-repeat="post in posts">{{ post.text }}</p>
-</div>
+<p ng-show="!editing">
+  <button class="btn btn-primary btn-lg" ng-click="editCat()">Edit</button>
+  <button class="btn btn-danger btn-lg" ng-click="deleteCat()">Delete</button>
+</p>
 
+<form class="form-horizontal" ng-show="editing">
+  <div class="form-group">
+    <label for="inputName1" class="col-sm-2 control-label">Name</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputName1"
+      placeholder="Name" ng-model="cat.name">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputEmail1" class="col-sm-2 control-label">Email</label>
+    <div class="col-sm-10">
+      <input type="email" class="form-control" id="inputEmail1"
+      placeholder="Email" ng-model="cat.email">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputPassword1" class="col-sm-2 control-label">Password</label>
+    <div class="col-sm-10">
+      <input type="password" class="form-control" id="inputPassword1"
+      placeholder="Password" ng-model="cat.password">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputFurColor1" class="col-sm-2 control-label">Fur Color</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputFurColor1"
+      placeholder="Name" ng-model="cat.fur_color">
+    </div>
+  </div>
+  <p>
+    <button class="btn btn-success btn-lg" ng-click="updateCat()">Save</button>
+    <button class="btn btn-primary btn-lg" ng-click="editing = false">Cancel</button>
+  </p>
+</form>
+
+<table class="table table-striped">
+  <th>Time</th>
+  <th>Post</th>
+  <tr ng-repeat="post in posts">
+    <td>{{ post.created_at | date:'medium' }}</td>
+    <td>{{ post.text }}</td>
+  </tr>
+</table>
