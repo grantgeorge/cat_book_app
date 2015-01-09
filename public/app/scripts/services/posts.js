@@ -1,22 +1,23 @@
 'use strict';
 
 /**
- * @ngdoc function
- * @name catBookUiApp.controller:MainCtrl
+ * @ngdoc service
+ * @name catBookUiApp.cats
  * @description
- * # MainCtrl
- * Controller of the catBookUiApp
+ * # posts
+ * Service in the catBookUiApp.
  */
 angular.module('catBookUiApp')
-  .controller('MainCtrl', function ($scope, $http) {
+  .factory('posts', function ($http) {
+
+    // var obj = {content:null}
 
     // Simple GET request example :
-    $http.get('http://cat_book.dev/index.php/cats').
+    return $http.get('http://cat_book.dev/index.php/posts').
       success(function(data, status, headers, config) {
         // this callback will be called asynchronously
         // when the response is available
-        console.log(data);
-        $scope.cats = data;
+        // obj.content = data;
       }).
       error(function(data, status, headers, config) {
         // called asynchronously if an error occurs
