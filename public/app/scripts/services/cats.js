@@ -8,20 +8,25 @@
  * Service in the catBookUiApp.
  */
 angular.module('catBookUiApp')
-  .factory('cats', function ($http) {
+  .service('CatsModel', function ($http) {
 
-    // var obj = {content:null}
+    var model = this,
+      URLS = {
+        FETCH: 'http://cat_book.dev/index.php/cats'
+      },
+      cats;
 
-    // Simple GET request example :
-    return $http.get('http://cat_book.dev/index.php/cats').
-      success(function(data, status, headers, config) {
-        // this callback will be called asynchronously
-        // when the response is available
-        // obj.content = data;
-      }).
-      error(function(data, status, headers, config) {
-        // called asynchronously if an error occurs
-        // or server returns response with an error status.
-      });
+    function extract(result) {
+      return result.data;
+    }
+
+    function cacheCats(result) {
+      cats = extract(result);
+      return cats;
+    }
+
+    model.getCats = function() {
+      return $http.get(URLS.FETCH).then(cacheCats);
+    };
 
   });

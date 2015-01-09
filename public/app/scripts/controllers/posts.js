@@ -8,11 +8,12 @@
  * Controller of the catBookUiApp
  */
 angular.module('catBookUiApp')
-  .controller('PostsCtrl', function ($scope, posts) {
+  .controller('PostsCtrl', function ($scope, PostsModel) {
 
-    posts.success(function(data) {
-      $scope.posts = data;
-      console.log($scope.posts);
-    })
+    PostsModel.getPosts()
+      .then(function(result) {
+        $scope.posts = result;
+        console.log($scope.posts);
+      })
 
   });
