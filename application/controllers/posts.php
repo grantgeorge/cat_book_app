@@ -14,10 +14,9 @@
 */
 
 // This can be removed if you use __autoload() in config.php OR use Modular Extensions
-require APPPATH.'/libraries/REST_Controller.php';
 require_once APPPATH.'/libraries/Faker-master/src/autoload.php';;
 
-class Posts extends REST_Controller {
+class Posts extends MY_Controller {
 
   public function __construct()
   {

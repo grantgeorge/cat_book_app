@@ -1,10 +1,14 @@
-<div class="row" ng-repeat="cat in cats">
-  <div class="col-xs-6 col-md-3">
-    <a href="#" class="thumbnail">
-      <img src="{{ cat.pro_pic }}" alt="...">
-    </a>
-  </div>
-  <div class="col-xs-6 col-md-3">
-    Text
-  </div>
-</div>
+<table class="table table-striped">
+  <th>Pro Pic</th>
+  <th>Name</th>
+  <th>fur_color</th>
+  <th>cat_phrase</th>
+  <th>city</th>
+  <tr ng-repeat="cat in cats">
+    <td><img src="{{ cat.pro_pic }}" alt="..."></td>
+    <td><a href="" ng-click="goToCat(cat.id)">{{ cat.name }}</a></td>
+    <td>{{ cat.fur_color }}</td>
+    <td>{{ cat.cat_phrase }}</td>
+    <td>{{ cat.city }}</td>
+  </tr>
+</table>

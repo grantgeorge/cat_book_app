@@ -2,41 +2,21 @@
 
 /**
  * @ngdoc service
- * @name catBookUiApp.posts
+ * @name catBookUiApp.cats
  * @description
  * # posts
  * Service in the catBookUiApp.
  */
 angular.module('catBookUiApp')
-  .service('PostsModel', function ($http) {
+  .factory('Posts', function ($resource) {
 
-    var model = this,
-      URLS = {
-        FETCH: 'http://cat_book.dev/index.php/posts'
-      },
-      posts;
-
-    function extract(result) {
-      return result.data;
-    }
-
-    function cachePosts(result) {
-      posts = extract(result);
-      return posts;
-    }
-
-    model.getPosts = function() {
-      return $http.get(URLS.FETCH).then(cachePosts);
-    };
-
-    model.getPostsForCat = function(id) {
-      return $http.get(URLS.FETCH, {
-        params: { cat_id: id },
-        // transformResponse: function (data, headers) {
-        //   // mess with the data
-        //   console.log(data);
-        // }
-      }).then(cachePosts);
-    };
+    return $resource('http://cat_book.dev/index.php/posts/:postId', null,
+    {
+      'update': { method: 'PUT', params:{},
+        header: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      }
+    });
 
   });

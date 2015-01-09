@@ -16,8 +16,7 @@ angular.module('catBookUiApp')
         header: {
           'Content-Type': 'application/x-www-form-urlencoded'
         }
-      },
-      'delete': { method: 'DELETE' }
+      }
     });
 
   });

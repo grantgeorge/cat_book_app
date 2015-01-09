@@ -20,6 +20,8 @@ class Migration_Seed_cats extends CI_Migration {
     $this->dbforge->add_field("password varchar(255) DEFAULT NULL");
     $this->dbforge->add_field("pro_pic varchar(255) DEFAULT NULL");
     $this->dbforge->add_field("fur_color varchar(255) DEFAULT NULL");
+    $this->dbforge->add_field("cat_phrase varchar(255) DEFAULT NULL");
+    $this->dbforge->add_field("city varchar(255) DEFAULT NULL");
     $this->dbforge->add_field("created_at DATETIME DEFAULT NULL");
     $this->dbforge->add_field("updated_at DATETIME DEFAULT NULL");
 
@@ -36,6 +38,8 @@ class Migration_Seed_cats extends CI_Migration {
       $cat['password'] = $faker->password;
       $cat['pro_pic'] = "http://lorempixel.com/125/125/cats/".$i;
       $cat['fur_color'] = $faker->safeColorname;
+      $cat['cat_phrase'] = $faker->catchPhrase;
+      $cat['city'] = $faker->city;
       $cat['updated_at'] = $mysqltime = date ("Y-m-d H:i:s", time());
       $cat['created_at'] = $mysqltime = date ("Y-m-d H:i:s", time());
 
