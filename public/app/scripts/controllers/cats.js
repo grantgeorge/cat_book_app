@@ -34,10 +34,23 @@ angular.module('catBookUiApp')
     $scope.deleteCat = function(data) {
       $scope.editing = false;
       Cats.delete({ catId: $scope.cat.id });
+      $location.path('/cats');
     }
 
     $scope.goToCat = function(id) {
       $location.path('/cats/'+id)
+    }
+
+    $scope.addPost = function() {
+      $scope.addingPost = true; // you should try newPost ;)
+    }
+
+    $scope.createPost = function() {
+      Posts.save({cat_id:$routeParams.id, text:$scope.newPost.text }, function(res) {
+        $scope.posts.push(res);
+        $scope.newPost = {};
+        $scope.addingPost = false;
+      })
     }
 
   });

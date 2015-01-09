@@ -2,15 +2,15 @@
 <table class="table table-striped">
   <th>Pro Pic</th>
   <th>Name</th>
-  <th>Email</th>
-  <th>Password</th>
   <th>fur_color</th>
+  <th>Cat Phrase</th>
+  <th>City</th>
   <tr>
     <td><img src="{{ cat.pro_pic }}" alt="..."></td>
     <td>{{ cat.name }}</td>
-    <td>{{ cat.email }}</td>
-    <td>{{ cat.password }}</td>
     <td>{{ cat.fur_color }}</td>
+    <td>{{ cat.cat_phrase }}</td>
+    <td>{{ cat.city }}</td>
   </tr>
 </table>
 
@@ -28,24 +28,24 @@
     </div>
   </div>
   <div class="form-group">
-    <label for="inputEmail1" class="col-sm-2 control-label">Email</label>
-    <div class="col-sm-10">
-      <input type="email" class="form-control" id="inputEmail1"
-      placeholder="Email" ng-model="cat.email">
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="inputPassword1" class="col-sm-2 control-label">Password</label>
-    <div class="col-sm-10">
-      <input type="password" class="form-control" id="inputPassword1"
-      placeholder="Password" ng-model="cat.password">
-    </div>
-  </div>
-  <div class="form-group">
     <label for="inputFurColor1" class="col-sm-2 control-label">Fur Color</label>
     <div class="col-sm-10">
       <input type="text" class="form-control" id="inputFurColor1"
       placeholder="Name" ng-model="cat.fur_color">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputCatPhrase" class="col-sm-2 control-label">Cat Phrase</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputCatPhrase"
+      placeholder="Name" ng-model="cat.cat_phrase">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputCity" class="col-sm-2 control-label">City</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputCity"
+      placeholder="Name" ng-model="cat.city">
     </div>
   </div>
   <p>
@@ -53,6 +53,8 @@
     <button class="btn btn-primary btn-lg" ng-click="editing = false">Cancel</button>
   </p>
 </form>
+
+<h1>Posts</h1>
 
 <table class="table table-striped">
   <th>Time</th>
@@ -62,3 +64,21 @@
     <td>{{ post.text }}</td>
   </tr>
 </table>
+
+<p ng-show="!editing">
+  <button class="btn btn-primary btn-lg" ng-click="addPost()">New</button>
+</p>
+
+<form class="form-horizontal" ng-show="addingPost">
+  <div class="form-group">
+    <label for="inputText" class="col-sm-2 control-label">Text</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputText"
+      placeholder="Text" ng-model="newPost.text">
+    </div>
+  </div>
+  <p>
+    <button class="btn btn-success btn-lg" ng-click="createPost()">Save</button>
+    <button class="btn btn-primary btn-lg" ng-click="addingPost = false">Cancel</button>
+  </p>
+</form>

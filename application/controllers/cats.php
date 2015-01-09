@@ -35,7 +35,7 @@ class Cats extends MY_Controller {
   {
     $new_cat = $this->post();
 
-    $new_cat['id'] = $this->cat_model->create($this->post());
+    $new_cat = $this->cat_model->create($this->post());
 
     $this->response($new_cat, 201);
   }

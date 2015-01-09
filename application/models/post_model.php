@@ -19,11 +19,16 @@ class Post_model extends CI_Model {
     return $query->row(0,'Post_model');
   }
 
-  public function create($data)
+  public function create($new_post)
   {
-    $this->db->insert('posts', $data);
+    $new_post['created_at'] = date("Y-m-d H:i:s");
+    $new_post['updated_at'] = date("Y-m-d H:i:s");
 
-    return $this->db->insert_id();
+    $this->db->insert('posts', $new_post);
+
+    $new_post['id'] = $this->db->insert_id();
+
+    return $new_post;
   }
 
   public function update($id, $data)
@@ -31,6 +36,8 @@ class Post_model extends CI_Model {
     $query = $this->db->get_where('posts', array('id' => $id));
 
     $post = $query->row(0, 'Post_model');
+
+    $data['updated_at'] = date("Y-m-d H:i:s");
 
     $this->db->where('id', $id);
     $this->db->update('posts', $data);

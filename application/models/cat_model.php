@@ -19,11 +19,16 @@ class Cat_model extends CI_Model {
     return $query->row(0,'Cat_model');
   }
 
-  public function create($data)
+  public function create($new_cat)
   {
-    $this->db->insert('cats', $data);
+    $new_cat['created_at'] = date("Y-m-d H:i:s");
+    $new_cat['updated_at'] = date("Y-m-d H:i:s");
 
-    return $this->db->insert_id();
+    $this->db->insert('cats', $new_cat);
+
+    $new_cat['id'] = $this->db->insert_id();
+
+    return $new_cat;
   }
 
   public function update($id, $data)
@@ -31,6 +36,8 @@ class Cat_model extends CI_Model {
     $query = $this->db->get_where('cats', array('id' => $id));
 
     $cat = $query->row(0, 'Cat_model');
+
+    $data['updated_at'] = date("Y-m-d H:i:s");
 
     $this->db->where('id', $id);
     $this->db->update('cats', $data);

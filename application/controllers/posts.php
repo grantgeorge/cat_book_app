@@ -35,7 +35,7 @@ class Posts extends MY_Controller {
   {
     $new_post = $this->post();
 
-    $new_post['id'] = $this->post_model->create($this->post());
+    $new_post = $this->post_model->create($this->post());
 
     $this->response($new_post, 201);
   }
